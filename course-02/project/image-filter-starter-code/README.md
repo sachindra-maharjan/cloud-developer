@@ -6,11 +6,12 @@ Udagram is a simple cloud application developed alongside the Udacity Cloud Engi
 
 ### Endpoints
 
-`http://image-filter-ms-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg`
+<a href="http://image-filter-ms-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg">http://image-filter-ms-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg</a>
 
-`http://image-filter-ms-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074__340.jpg`
+<a href="http://image-filter-ms-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074__340.jpg">http://image-filter-ms-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074\_\_340.jpg</a>
 
-'http://image-filter-ms-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url='
+<a href="http://image-filter-ms-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=">
+http://image-filter-ms-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=</a>
 
 ### Build Commands
 
