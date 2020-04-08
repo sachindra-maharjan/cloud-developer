@@ -49,7 +49,7 @@ const path = require("path");
       })
       .catch((err) => {
         console.log(err);
-        res.status(422).send({ error: "invalid image url" });
+        res.status(422).send({ error: "invalid image" });
       });
   });
   //! END @TODO1
