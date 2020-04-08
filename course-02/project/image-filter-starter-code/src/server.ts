@@ -35,7 +35,7 @@ const path = require("path");
     var validUrl = require("valid-url");
 
     if (!image_url || !validUrl.isUri(image_url)) {
-      res.status(400).send({ error: "image url is required" });
+      res.status(400).send({ error: "invalid image url" });
     }
 
     const filtered_image = filterImageFromURL(image_url);
@@ -49,7 +49,7 @@ const path = require("path");
       })
       .catch((err) => {
         console.log(err);
-        res.status(400).send({ error: "invalid image url" });
+        res.status(422).send({ error: "invalid image" });
       });
   });
   //! END @TODO1
