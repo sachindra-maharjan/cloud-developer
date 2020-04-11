@@ -28,4 +28,4 @@ eb deploy
 
 ### Screenshots
 
-<image src="images/image-filter-ms-dev.png" />
+<image src="deployment_screenshots/image-filter-ms-dev.png" />
