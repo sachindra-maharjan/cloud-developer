@@ -1,8 +1,9 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
 const path = require("path");
+const validUrl = require("valid-url");
 
 (async () => {
   // Init the Express application
@@ -30,9 +31,8 @@ const path = require("path");
 
   /**************************************************************************** */
 
-  app.get("/filteredimage", (req, res) => {
-    const image_url = req.query.image_url;
-    var validUrl = require("valid-url");
+  app.get("/filteredimage", (req: Request, res: Response) => {
+    let { image_url } = req.query;
 
     if (!image_url || !validUrl.isUri(image_url)) {
       res.status(400).send({ error: "invalid image url" });
@@ -56,7 +56,7 @@ const path = require("path");
 
   // Root Endpoint
   // Displays a simple message to the user
-  app.get("/", async (req, res) => {
+  app.get("/", async (req: Request, res: Response) => {
     res.send("try GET /filteredimage?image_url={{}}");
   });
 
