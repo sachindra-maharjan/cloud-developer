@@ -30,7 +30,7 @@ Worker Node - A node on which pods are scheduled and run.
 **Pod** - A group of tightly coupled containers with shared storage, network, and a specification for how to run the containers. All the containers in a Pod are co-located and co-scheduled. The worker node(s) hosts the pods.
 The diagram below shows a Kubernetes cluster with all the components mentioned above.
 
-<img src="kub-image-2" />
+<img src="kub-image-2.png" />
 
 In the above diagram, the following elements are involved:
 
@@ -44,21 +44,21 @@ In the above diagram, the following elements are involved:
 ### kubectl commands
 
 ```
-kubectl To display category-wise list all the commands and corresponding description
-kubectl version To display the version of installed Kubernetes client and server
-kubectl version --client To display the version of installed Kubernetes cluster
-kubectl config current-context To display the configuration file name for the current context
-kubectl get nodes To display the list of nodes along with their status, role, age, and version
-kubectl get pods To display the list of containers in current namespace
-kubectl get pods --all-namespaces To display all pods in all namespaces
-kubectl cluster-info To display the cluster state. It returns a URL
+`kubectl` To display category-wise list all the commands and corresponding description
+`kubectl version` To display the version of installed Kubernetes client and server
+`kubectl version --client` To display the version of installed Kubernetes cluster
+`kubectl config current-context` To display the configuration file name for the current context
+`kubectl get nodes` To display the list of nodes along with their status, role, age, and version
+`kubectl get pods` To display the list of containers in current namespace
+`kubectl get pods --all-namespaces` To display all pods in all namespaces
+`kubectl cluster-info` To display the cluster state. It returns a URL
 ```
 
 ## What is a Pod?
 
 A pod is a "logical-grouping" of tightly coupled containers (one or more) that have shared storage, a network, and a standard specification. The worker node(s) hosts one or more pods at a time. The image below shows a pod having two containers running in a host.
 
-<img src="kub-image-3" />
+<img src="kub-image-3.png" />
 
 The set of containers within a pod have the following essential characteristics:
 
@@ -116,15 +116,18 @@ spec:
       restartPolicy: Always
 ```
 
-Deploy it!
+Deploy using following command
 
 `kubectl apply -f reverseproxy-deployment.yaml`
+
 See the running deployments:
 
 `kubectl get deployment`
+
 See the replica sets:
 
 `get rs`
+
 See the pods:
 
 `get pod`
