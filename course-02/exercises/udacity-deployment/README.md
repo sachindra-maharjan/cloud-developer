@@ -1,10 +1,12 @@
 ## Docker Compose
 
-<img scr="images/nginx.png">
-
 Docker Compose allows us to run applications with multiple containers. We'll use a YAML file to configure all of the services we need, then run a single command, to create and start all of the services. Follow the instructions below to use Nginx and Docker Compose.
 
-##Docker Compose Commands
+## System Architecture
+
+<img scr="images/nginx.png" />
+
+## Docker Compose Commands
 
 `docker container ls`
 `docker container kill <container_name>`
