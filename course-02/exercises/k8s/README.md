@@ -43,16 +43,15 @@ In the above diagram, the following elements are involved:
 
 ### kubectl commands
 
-```
-`kubectl` To display category-wise list all the commands and corresponding description
-`kubectl version` To display the version of installed Kubernetes client and server
-`kubectl version --client` To display the version of installed Kubernetes cluster
-`kubectl config current-context` To display the configuration file name for the current context
-`kubectl get nodes` To display the list of nodes along with their status, role, age, and version
-`kubectl get pods` To display the list of containers in current namespace
-`kubectl get pods --all-namespaces` To display all pods in all namespaces
-`kubectl cluster-info` To display the cluster state. It returns a URL
-```
+| Command | Description |
+|`kubectl`| To display category-wise list all the commands and corresponding description|
+|`kubectl version`| To display the version of installed Kubernetes client and server|
+|`kubectl version --client`| To display the version of installed Kubernetes cluster|
+|`kubectl config current-context`| To display the configuration file name for the current context|
+|`kubectl get nodes`| To display the list of nodes along with their status, role, age, and version|
+|`kubectl get pods`| To display the list of containers in current namespace|
+|`kubectl get pods --all-namespaces`| To display all pods in all namespaces|
+|`kubectl cluster-info`| To display the cluster state. It returns a URL|
 
 ## What is a Pod?
 
@@ -86,7 +85,7 @@ In the previous concept, we learned that the Controller specifies the necessary 
 
 A Deployment contains the details about the containers that would comprise the Pods / ReplicaSets.
 
-```
+```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -101,18 +100,18 @@ spec:
         service: reverseproxy
     spec:
       containers:
-      - image: scheele/reverseproxy
-        name: reverseproxy
-        imagePullPolicy: Always
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "1024Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 8080
+        - image: scheele/reverseproxy
+          name: reverseproxy
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
       restartPolicy: Always
 ```
 
@@ -131,3 +130,37 @@ See the replica sets:
 See the pods:
 
 `get pod`
+
+Update the `reverseproxy`:
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    service: reverseproxy
+    version: v2
+  name: reverseproxy
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        service: reverseproxy
+        version: v2
+    spec:
+      containers:
+        - image: scheele/reverseproxy
+          name: reverseproxy
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+      restartPolicy: Always
+```
