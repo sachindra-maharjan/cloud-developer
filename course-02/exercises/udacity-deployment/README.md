@@ -227,7 +227,7 @@ Previously we read that when different backend services are running on the same 
 - It raises the security level for accessing the services only through the reverse-proxy server (encapsulation of services).
 - It resolves the conflict between services running on the same port number in separate containers by directing the client requests to the appropriate backend server. The diagram below shows how the Nginx serves as a reverse-proxy server.
 
-<img scr="images/nginx.png" />
+<img src="images/nginx.png" />
 
 In this concept, we will learn about the basic configuration of Nginx reverse-proxy server. Here, we have a configuration file (nginx.conf) that will help us to associate the incoming request from Nginx to different servers. Once we have Nginx configured in place, we will use Docker-compose.
 
