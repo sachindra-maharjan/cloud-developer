@@ -1,9 +1,9 @@
-#language: minimal
+language: minimal
 
-#services: docker
+services: docker
 
-env:
-  - DOCKER_COMPOSE_VERSION=1.4.2
+#env:
+#  - DOCKER_COMPOSE_VERSION=1.4.2
 
 before_install:
   - docker -v && docker-compose -v
