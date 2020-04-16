@@ -12,8 +12,8 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - sudo chmod +x ./kubectl
-  - sudo mv ./kubectl /usr/local/bin/kubectl
+#   - sudo chmod +x ./kubectl
+#   - sudo mv ./kubectl /usr/local/bin/kubectl
 
 install:
   - echo 'hello travis'
