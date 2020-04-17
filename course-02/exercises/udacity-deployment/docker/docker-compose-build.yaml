@@ -4,5 +4,5 @@ services:
   reverseproxy:
     image: sachindramaharjan/reverseproxy
     build: 
-      context: .
-      dockerfile: Dockerfile
+      - context: .
+      - dockerfile: Dockerfile
