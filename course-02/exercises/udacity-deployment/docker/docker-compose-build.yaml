@@ -1,18 +1,14 @@
 version: "3"
 services:
-  #reverseproxy:
-   #build:
-      #context: .
-    #image: sachindramaharjan/reverseproxy
+  reverseproxy:
+    build: .
+    image: sachindramaharjan/reverseproxy
   backend_user:
-    build:
-      context: ../../udacity-restapi-user
+    build: ../../udacity-restapi-user
     image: sachindramaharjan/udacity-restapi-user
   backend_feed:
-    build:
-      context: ../../udacity-restapi-feed
+    build: ../../udacity-restapi-feed
     image: sachindramaharjan/udacity-restapi-feed
   frontend:
-    build:
-      context: ../../udacity-frontend
+    build: ../../udacity-frontend
     image: sachindramaharjan/udacity-frontend:local
