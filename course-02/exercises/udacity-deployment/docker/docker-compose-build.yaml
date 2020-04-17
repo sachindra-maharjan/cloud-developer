@@ -2,13 +2,3 @@ version: "3"
 services:
   reverseproxy:
     build: .
-    #image: sachindramaharjan/reverseproxy
-  backend_user:
-    build: ../../udacity-restapi-user
-    #image: sachindramaharjan/udacity-restapi-user
-  backend_feed:
-    build: ../../udacity-restapi-feed
-    #image: sachindramaharjan/udacity-restapi-feed
-  frontend:
-    build: ../../udacity-frontend
-    #image: sachindramaharjan/udacity-frontend:local
