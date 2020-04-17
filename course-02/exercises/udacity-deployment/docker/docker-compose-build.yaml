@@ -2,6 +2,5 @@ version: "3.7"
 services:
 
   reverseproxy:
-    build:
-      context: .
+    build: .
     image: sachindramaharjan/reverseproxy
