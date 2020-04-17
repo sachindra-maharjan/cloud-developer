@@ -1,6 +1,2 @@
 version: "3.7"
 services:
-
-  reverseproxy:
-    build: .
-    image: sachindramaharjan/reverseproxy
