@@ -1,5 +1,7 @@
 version: "3.7"
 services:
 
-  redis:
-    image: "redis:alpine"
+  reverseproxy:
+    build:
+      context: .
+    image: sachindramaharjan/reverseproxy
