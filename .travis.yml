@@ -14,7 +14,6 @@ before_install:
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
   - kubectl version --client
-  - export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
 
 install:
   - docker-compose -f course-02/exercises/udacity-deployment/docker/docker-compose-build.yaml build

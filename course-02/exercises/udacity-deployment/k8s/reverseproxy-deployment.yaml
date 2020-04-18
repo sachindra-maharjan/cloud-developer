@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     service: reverseproxy
+    version: v2
   name: reverseproxy
 spec:
   replicas: 2
@@ -10,6 +11,7 @@ spec:
     metadata:
       labels:
         service: reverseproxy
+        version: v2
     spec:
       containers:
         - image: sachindramaharjan/reverseproxy
