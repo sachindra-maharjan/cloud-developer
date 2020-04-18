@@ -1,4 +1,18 @@
-version: '3.7'
+version: "3"
 services:
-  redis:
-    image: redis:4.0.11-alpine
+  reverseproxy:
+    build:
+      context: .
+    image: sachindramaharjan/reverseproxy
+  backend_user:
+    build:
+      context: ../../udacity-restapi-user
+    image: sachindramaharjan/udacity-restapi-user
+  backend_feed:
+    build:
+      context: ../../udacity-restapi-feed
+    image: sachindramaharjan/udacity-restapi-feed
+  frontend:
+    build:
+      context: ../../udacity-frontend
+    image: sachindramaharjan/udacity-frontend:local
