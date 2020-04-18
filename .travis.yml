@@ -13,4 +13,4 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 install:
-  - docker-compose -f course-02/exercises/udacity-deployment/docker/docker-compose-build.yaml build
+  - docker-compose -f course-02/exercises/udacity-deployment/docker/docker-compose.yaml build
