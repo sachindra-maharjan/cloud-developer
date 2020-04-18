@@ -1,8 +1,5 @@
-version: "3.7"
+version: '3'
+
 services:
-  
-  reverseproxy:
-    image: sachindramaharjan/reverseproxy
-    build: 
-      - context: .
-      - dockerfile: Dockerfile
+  redis:
+    image: redis:4.0.11-alpine
