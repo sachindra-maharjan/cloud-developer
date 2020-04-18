@@ -14,6 +14,8 @@ before_install:
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
   - kubectl version --client
+  - kubectl config --kubeconfig=kube-config set-cluster development --server=https://1.2.3.4 --certificate-authority=fake-ca-file
+  - kubectl config --kubeconfig=kube-config view
 
 install:
   - docker-compose -f course-02/exercises/udacity-deployment/docker/docker-compose-build.yaml build
