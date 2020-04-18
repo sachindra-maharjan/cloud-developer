@@ -15,13 +15,13 @@ spec:
         - image: sachindramaharjan/udacity-restapi-feed
           name: backend-feed
           imagePullPolicy: Always
-          resources:
-            requests:
-              memory: "540Mi"
-              cpu: "500m"
-            limits:
-              memory: "1024Mi"
-              cpu: "1024m"
+          # resources:
+          #   requests:
+          #     memory: "540Mi"
+          #     cpu: "500m"
+          #   limits:
+          #     memory: "1024Mi"
+          #     cpu: "1024m"
           env:
             - name: URL
               valueFrom:

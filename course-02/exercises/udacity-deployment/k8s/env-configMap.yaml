@@ -6,7 +6,7 @@ data:
   AWS_REGION: us-east-1
   JWT_SECRET: mysecret
   POSTGRES_DATABASE: udagrammaharjandev
-  POSTGRESS_HOST: udagrammaharjandev.cls20kxz9lls.us-east-1.rds.amazonaws.com
+  POSTGRES_HOST: udagrammaharjandev.cls20kxz9lls.us-east-1.rds.amazonaws.com
   URL: http://localhost:8100
 metadata:
   name: env-config
