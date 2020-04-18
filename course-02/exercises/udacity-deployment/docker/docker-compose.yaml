@@ -8,7 +8,6 @@ services:
     depends_on:
       - backend-user
       - backend-feed
-      
   backend-user:
     image: sachindramaharjan/udacity-restapi-user
     volumes:
@@ -23,7 +22,6 @@ services:
       AWS_BUCKET: $AWS_MEDIA_BUCKET
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
-      
   backend-feed:
     image: sachindramaharjan/udacity-restapi-feed
     volumes:
