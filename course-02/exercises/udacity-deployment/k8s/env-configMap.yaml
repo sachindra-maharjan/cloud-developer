@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 data:
-  AWS_BUCKET: udagram-maharjan-dev
+  AWS_MEDIA_BUCKET: udagram-maharjan-dev
   AWS_PROFILE: default
   AWS_REGION: us-east-1
   JWT_SECRET: mysecret
