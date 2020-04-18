@@ -5,10 +5,17 @@ preferences: {}
 clusters:
 - cluster:
   name: development
+- cluster:
+  name: scratch
 
 users:
 - name: developer
+- name: experimenter
 
 contexts:
 - context:
   name: dev-frontend
+- context:
+  name: dev-storage
+- context:
+  name: exp-scratch
