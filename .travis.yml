@@ -1,0 +1,37 @@
+language: minimal
+
+services: docker
+
+env:
+  - DOCKER_COMPOSE_VERSION=1.25.4
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.15.2/bin/linux/amd64/kubectl
+  - chmod +x ./kubectl
+  - sudo mv ./kubectl /usr/local/bin/kubectl
+  - kubectl version --client
+  - curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
+  - sudo install minikube /usr/local/bin/
+  - minikube start
+  - minikube status
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/env-configMap.yaml
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/env-secret.yaml
+
+install:
+  - docker-compose -f course-02/exercises/udacity-deployment/docker/docker-compose-build.yaml build
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/frontend-deployment.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/frontend-service.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/udacity-restapi-feed-deployment.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/backend-feed-service.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/udacity-restapi-user-deployment.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/backend-user-service.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/reverseproxy-deployment.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/reverseproxy-service.yaml --validate=false
+
+script:
+  - kubectl get pods
+  - kubectl get svc

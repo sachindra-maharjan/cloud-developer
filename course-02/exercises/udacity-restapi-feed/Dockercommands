@@ -1,0 +1,8 @@
+#To build the container
+docker build -t sachindramaarjan/udacity-restapi-feed
+
+#To list the container images
+docker images
+
+#To run the container
+docker run --rm --publish 8080:8080 -v $HOME/.aws:/root/.aws --env POSTGRES_HOST=$POSTGRES_HOST --env POSTGRES_USERNAME=$POSTGRES_USERNAME --env POSTGRES_PASSWORD=$POSTGRES_PASSWORD --env POSTGRES_DB=$POSTGRES_DB --env AWS_REGION=$AWS_REGION --env AWS_PROFILE=$AWS_PROFILE --env AWS_BUCKET=$AWS_BUCKET --env JWT_SECRET=$JWT_
