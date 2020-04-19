@@ -23,5 +23,13 @@ before_install:
 
 install:
   - docker-compose -f course-02/exercises/udacity-deployment/docker/docker-compose-build.yaml build
-  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/frontend-deployment.yaml
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/frontend-deployment.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/frontend-service.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/udacity-restapi-feed-deployment.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/backend-feed-service.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/udacity-restapi-user-deployment.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/backend-user-service.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/reverseproxy-deployment.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/reverseproxy-service.yaml --validate=false
+  
   
