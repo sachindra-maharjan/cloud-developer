@@ -31,5 +31,7 @@ install:
   - kubectl apply -f course-02/exercises/udacity-deployment/k8s/backend-user-service.yaml --validate=false
   - kubectl apply -f course-02/exercises/udacity-deployment/k8s/reverseproxy-deployment.yaml --validate=false
   - kubectl apply -f course-02/exercises/udacity-deployment/k8s/reverseproxy-service.yaml --validate=false
-  
-  
+
+script:
+  - kubectl get pods
+  - kubectl get svc
