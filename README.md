@@ -73,16 +73,86 @@ Install Docker Desktop to create containers for individual microservices. Refer 
 - You can find installation instructions for other operating systems at: https://docs.docker.com/install/
 - For more on docker and docker compose, check out this link: https://github.com/sachindramaharjan/cloud-developer/tree/feature/microservice/course-02/exercises/udacity-deployment/docker
 
+Commands to build all images using docker compose
+
+```
+docker-compose -f course-02/exercises/udacity-deployment/docker/docker-compose-build.yaml build
+
+```
+
 ### 5. Kubernetes
 
+Please follow the below link to learn about Kubernetes:
 https://github.com/sachindramaharjan/cloud-developer/tree/feature/microservice/course-02/exercises/udacity-deployment/k8s
+
+#### Install kubectl
+
+Download the latest release with the command:
+
+```
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+```
+
+To download a specific version, replace the `$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)` portion of the command with the specific version.
+For example, to download version v1.18.0 on Linux, type:
+
+`curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/linux/amd64/kubectl`
+
+Make the kubectl binary executable.
+
+`chmod +x ./kubectl`
+
+Move the binary in to your PATH.
+
+`sudo mv ./kubectl /usr/local/bin/kubectl`
+
+Test to ensure the version you installed is up-to-date:
+
+`kubectl version --client`
+
+#### Install minicube
+
+Install via diect download
+
+`curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube'
+
+Add the Minikube executable to your path:
+
+```
+
+sudo mkdir -p /usr/local/bin/
+sudo install minikube /usr/local/bin/
+
+```
+
+Confirm installation
+
+`minikube start`
+
+Once minikube start finishes, run the command below to check the status of the cluster:
+
+`minikube status`
+
+If your cluster is running, the output from minikube status should be similar to:
+
+```
+
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+```
 
 ### 6. Travis CI
 
 Sign-up on Travis-ci.com using your GitHub account credentials and then create a `.travis.yml` for your project. [Refer this tutorial to get started with Travis CI](https://docs.travis-ci.com/user/tutorial/).
 
 ```
-language: minimal
+
+llanguage: minimal
 
 services: docker
 
@@ -94,12 +164,31 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.15.2/bin/linux/amd64/kubectl
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
   - kubectl version --client
+  - curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
+  - sudo install minikube /usr/local/bin/
+  - minikube start
+  - minikube status
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/env-configMap.yaml
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/env-secret.yaml
 
 install:
   - docker-compose -f course-02/exercises/udacity-deployment/docker/docker-compose-build.yaml build
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/frontend-deployment.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/frontend-service.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/udacity-restapi-feed-deployment.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/backend-feed-service.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/udacity-restapi-user-deployment.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/backend-user-service.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/reverseproxy-deployment.yaml --validate=false
+  - kubectl apply -f course-02/exercises/udacity-deployment/k8s/reverseproxy-service.yaml --validate=false
+
+script:
+  - kubectl get pods
+  - kubectl get svc
+
 
 ```
