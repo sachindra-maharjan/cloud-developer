@@ -22,6 +22,7 @@ before_install:
   - kubectl config --kubeconfig=config-demo set-context dev-storage --cluster=development --namespace=storage --user=developer
   - kubectl config --kubeconfig=config-demo set-context exp-scratch --cluster=scratch --namespace=default --user=experimenter
   - kubectl config --kubeconfig=kube-config view
+  - export KUBECONFIG=$KUBECONFIG:kube-config
   - kubectl apply -f course-02/exercises/udacity-deployment/k8s/env-configMap.yaml
   - kubectl apply -f course-02/exercises/udacity-deployment/k8s/env-secret.yaml
 
