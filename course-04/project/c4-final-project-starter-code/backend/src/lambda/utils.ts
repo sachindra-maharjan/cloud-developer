@@ -1,5 +1,6 @@
-import { APIGatewayProxyEvent } from "aws-lambda";
-import { parseUserId } from "../auth/utils";
+import { APIGatewayProxyEvent } from 'aws-lambda'
+import { parseUserId } from '../auth/utils'
+import { DocumentClient } from 'aws-sdk/clients/dynamodb'
 
 /**
  * Get a user id from an API Gateway event
@@ -13,4 +14,33 @@ export function getUserId(event: APIGatewayProxyEvent): string {
   const jwtToken = split[1]
 
   return parseUserId(jwtToken)
+}
+
+export async function existsTodoId(
+  docClient: DocumentClient,
+  tablename: string,
+  todoId: string
+) {
+  const result = await docClient
+    .query({
+      TableName: tablename,
+      KeyConditionExpression: 'todoId = :todoId',
+      ExpressionAttributeValues: {
+        ':todoId': todoId
+      }
+    })
+    .promise()
+  return result.Count !== 0
+}
+
+export function httpResponse(status: number, message: any) {
+  return {
+    statusCode: status,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    },
+    body: JSON.stringify({
+      message
+    })
+  }
 }
